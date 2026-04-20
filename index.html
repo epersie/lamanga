@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Manga — epersie</title>
+<meta name="description" content="Una historia real de infancia en el Valle de Aburrá, Colombia.">
+<meta property="og:title" content="La Manga — epersie">
+<meta property="og:type" content="book">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#F7F3EC; --paper:#EFE9DC; --warm:#E8DFCC;
+    --ink:#1C1814; --muted:#6B5F52; --gold:#A0784A;
+    --rust:#7A3B1E; --rule:rgba(107,95,82,0.18);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'Lora',Georgia,serif;font-size:17px;line-height:1.75;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.028;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size:200px 200px}
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:1.2;color:var(--ink)}
+  p{margin-bottom:1.1em} p:last-child{margin-bottom:0}
+  .container{max-width:720px;margin:0 auto;padding:0 28px}
+  .container-wide{max-width:960px;margin:0 auto;padding:0 28px}
+  .rule{border:none;border-top:1px solid var(--rule);margin:0}
+
+  /* ── LANG SELECTOR ── */
+  .lang-bar{background:var(--ink);padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .lang-bar-inner{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap}
+  .lang-btn{background:none;border:none;cursor:pointer;padding:5px 9px;border-radius:3px;
+    font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.06em;
+    color:rgba(247,243,236,.45);transition:color .18s,background .18s;white-space:nowrap}
+  .lang-btn:hover{color:rgba(247,243,236,.85);background:rgba(247,243,236,.06)}
+  .lang-btn.active{color:var(--cream);background:rgba(247,243,236,.12);font-weight:500}
+  .lang-sep{color:rgba(247,243,236,.18);font-size:11px;user-select:none}
+
+  /* ── MASTHEAD ── */
+  .masthead{padding:22px 0 18px;border-bottom:1px solid var(--ink)}
+  .masthead-inner{display:flex;justify-content:space-between;align-items:baseline}
+  .masthead-brand{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.25em;
+    text-transform:uppercase;color:var(--muted);text-decoration:none}
+  .masthead-link{font-family:'Lora',serif;font-size:13px;color:var(--muted);text-decoration:none;
+    letter-spacing:.04em;transition:color .2s}
+  .masthead-link:hover{color:var(--rust)}
+
+  /* ── HERO ── */
+  .hero{padding:72px 0 80px}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
+  .hero-book-cover{width:100%;aspect-ratio:2/3;background:var(--ink);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;padding:32px 24px;
+    box-shadow:8px 10px 32px rgba(28,24,20,.22);position:relative;overflow:hidden}
+  .hero-book-cover::before{content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.015) 2px,rgba(255,255,255,.015) 4px)}
+  .cover-rule{width:100%;border-top:1px solid rgba(247,243,236,.25);margin-bottom:20px}
+  .cover-rule-mid{width:40px;border-top:1px solid rgba(247,243,236,.4);margin:0 auto 12px}
+  .cover-title-main{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;
+    color:var(--cream);text-align:center;line-height:1.1;margin-bottom:12px}
+  .cover-subtitle-text{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:300;
+    font-style:italic;color:rgba(247,243,236,.7);text-align:center;letter-spacing:.06em;margin-bottom:28px}
+  .cover-illustration{margin-bottom:24px;opacity:.55}
+  .cover-rule-bot{width:100%;border-top:1px solid rgba(247,243,236,.25);margin-bottom:14px}
+  .cover-author{font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:rgba(247,243,236,.55);text-align:center}
+  .hero-badge{position:absolute;bottom:-14px;right:-14px;background:var(--gold);color:var(--cream);
+    font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    padding:8px 14px;box-shadow:2px 2px 8px rgba(28,24,20,.2)}
+  .hero-book{position:relative}
+  .hero-content{padding-top:8px}
+  .hero-kicker{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .hero-kicker::before{content:'';display:block;width:24px;height:1px;background:var(--muted)}
+  .hero-title{font-size:clamp(36px,5vw,52px);font-weight:400;line-height:1.08;margin-bottom:8px}
+  .hero-title em{font-style:italic;color:var(--gold)}
+  .hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;
+    color:var(--muted);margin-bottom:28px;line-height:1.4}
+  .hero-body{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.8}
+  .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .hero-price{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--muted);font-style:italic}
+
+  /* ── BUTTON ── */
+  .btn{display:inline-block;background:var(--ink);color:var(--cream);font-family:'Lora',serif;
+    font-size:14px;letter-spacing:.08em;text-decoration:none;padding:14px 36px;border:none;
+    cursor:pointer;transition:background .2s,transform .15s}
+  .btn:hover{background:var(--rust);transform:translateY(-1px)}
+  .btn-cream{background:var(--cream);color:var(--ink);font-size:15px;padding:16px 48px}
+  .btn-cream:hover{background:var(--gold);color:var(--cream);transform:translateY(-2px)}
+
+  /* ── BANNER QUOTE ── */
+  .banner-quote{background:var(--ink);color:var(--cream);padding:52px 0;position:relative;overflow:hidden}
+  .banner-quote::before{content:'\201C';position:absolute;left:-20px;top:-40px;
+    font-family:'Playfair Display',serif;font-size:280px;color:rgba(247,243,236,.04);line-height:1;pointer-events:none}
+  .banner-quote blockquote{font-family:'Playfair Display',serif;font-size:clamp(18px,3vw,26px);
+    font-style:italic;text-align:center;max-width:680px;margin:0 auto;color:var(--cream);line-height:1.5}
+  .banner-quote cite{display:block;margin-top:18px;font-family:'Cormorant Garamond',serif;
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,243,236,.45);font-style:normal}
+
+  /* ── SECTIONS ── */
+  .section{padding:80px 0}
+  .section-alt{background:var(--paper)}
+  .section-label{font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+  .section-title{font-size:clamp(26px,4vw,38px);font-weight:400;margin-bottom:28px;line-height:1.15}
+
+  /* ── PROBLEM LIST ── */
+  .problem-list{list-style:none;margin:0 0 32px}
+  .problem-list li{font-size:16px;padding:14px 0 14px 28px;border-bottom:1px solid var(--rule);
+    position:relative;color:var(--muted);font-style:italic}
+  .problem-list li::before{content:'—';position:absolute;left:0;color:var(--gold);font-style:normal}
+  .problem-list li:first-child{border-top:1px solid var(--rule)}
+
+  /* ── TRANSFORM GRID ── */
+  .transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px}
+  .transform-card{background:var(--cream);padding:28px 24px;border:1px solid var(--rule)}
+  .transform-card.after{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .transform-label{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.25em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .transform-card.after .transform-label{color:rgba(247,243,236,.45)}
+  .transform-card ul{list-style:none}
+  .transform-card ul li{font-size:15px;padding:7px 0;border-bottom:1px solid var(--rule);color:var(--muted)}
+  .transform-card.after ul li{border-color:rgba(247,243,236,.1);color:rgba(247,243,236,.85)}
+  .transform-card ul li:last-child{border-bottom:none}
+
+  /* ── CONTENTS ── */
+  .content-item{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;
+    border-bottom:1px solid var(--rule);align-items:start}
+  .content-item:first-child{border-top:1px solid var(--rule)}
+  .content-num{font-family:'Playfair Display',serif;font-size:32px;color:var(--warm);line-height:1;padding-top:4px}
+  .content-title{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:6px}
+  .content-desc{font-size:14px;color:var(--muted);line-height:1.6;font-style:italic;margin:0}
+
+  /* ── EXCERPT ── */
+  .excerpt-box{background:var(--warm);padding:48px 52px;border-left:3px solid var(--gold);position:relative}
+  .excerpt-box::before{content:'\201C';position:absolute;top:16px;left:24px;
+    font-family:'Playfair Display',serif;font-size:64px;color:var(--gold);line-height:1;opacity:.4}
+  .excerpt-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;
+    line-height:1.7;color:var(--ink);margin-bottom:20px}
+  .excerpt-source{font-size:13px;color:var(--muted)}
+
+  /* ── 7 DAYS ── */
+  .days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:32px}
+  .day-card{background:var(--cream);border:1px solid var(--rule);padding:16px 10px;text-align:center;
+    transition:border-color .2s,background .2s}
+  .day-card:hover{border-color:var(--gold);background:var(--paper)}
+  .day-num{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);display:block;margin-bottom:6px}
+  .day-title{font-size:11px;color:var(--muted);line-height:1.4;font-style:italic}
+
+  /* ── FOR WHOM ── */
+  .for-whom-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px}
+  .for-whom-col h3{font-size:16px;font-weight:400;font-style:italic;margin-bottom:16px}
+  .for-whom-col ul{list-style:none}
+  .for-whom-col ul li{font-size:15px;padding:10px 0 10px 20px;border-bottom:1px solid var(--rule);
+    position:relative;color:var(--muted)}
+  .for-col-yes li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-size:13px}
+  .for-col-no li::before{content:'×';position:absolute;left:0;color:var(--muted);font-size:13px}
+
+  /* ── AUTHOR ── */
+  .author-grid{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start}
+  .author-initials{aspect-ratio:1;background:var(--ink);display:flex;align-items:center;
+    justify-content:center;font-family:'Playfair Display',serif;font-size:48px;color:var(--cream);font-style:italic}
+  .author-name{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;margin-bottom:6px}
+  .author-meta{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .author-bio{font-size:16px;color:var(--muted);line-height:1.8}
+  .author-bio p{margin-bottom:.9em}
+
+  /* ── FINAL CTA ── */
+  .final-cta{background:var(--ink);color:var(--cream);padding:96px 0;text-align:center;
+    position:relative;overflow:hidden}
+  .final-cta::before{content:'LA MANGA';position:absolute;font-family:'Playfair Display',serif;
+    font-size:180px;font-weight:700;color:rgba(247,243,236,.03);letter-spacing:.1em;
+    top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none}
+  .final-cta-title{font-size:clamp(26px,4vw,40px);font-weight:400;font-style:italic;
+    margin-bottom:16px;color:var(--cream)}
+  .final-cta-sub{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;
+    color:rgba(247,243,236,.6);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
+  .final-price{font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(247,243,236,.4);
+    margin-top:18px;font-style:italic}
+
+  /* ── FOOTER ── */
+  .footer{padding:32px 0;border-top:1px solid var(--rule)}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;
+    font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--muted);letter-spacing:.08em}
+  .footer-inner a{color:var(--muted);text-decoration:none}
+  .footer-inner a:hover{color:var(--rust)}
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .fade-up{animation:fadeUp .8s ease forwards;opacity:0}
+  .delay-1{animation-delay:.1s}.delay-2{animation-delay:.25s}.delay-3{animation-delay:.4s}
+  .delay-4{animation-delay:.55s}.delay-5{animation-delay:.7s}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:700px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-book{max-width:240px;margin:0 auto}
+    .transform-grid{grid-template-columns:1fr}
+    .days-grid{grid-template-columns:repeat(4,1fr)}
+    .for-whom-grid{grid-template-columns:1fr}
+    .author-grid{grid-template-columns:1fr}
+    .author-initials{max-width:120px}
+    .excerpt-box{padding:36px 28px 36px 36px}
+    .masthead-link{display:none}
+    .lang-btn{font-size:12px;padding:4px 7px}
+  }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<nav class="lang-bar" aria-label="Language selector">
+  <div class="lang-bar-inner">
+    <button class="lang-btn active" onclick="setLang('es')" data-lang="es">🇪🇸 Español</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('en')" data-lang="en">🇬🇧 English</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('pt')" data-lang="pt">🇧🇷 Português</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('fr')" data-lang="fr">🇫🇷 Français</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('it')" data-lang="it">🇮🇹 Italiano</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('de')" data-lang="de">🇩🇪 Deutsch</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('zh')" data-lang="zh">🇨🇳 中文</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('ja')" data-lang="ja">🇯🇵 日本語</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('ko')" data-lang="ko">🇰🇷 한국어</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('hi')" data-lang="hi">🇮🇳 हिन्दी</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('hi')" data-lang="hi">🇮🇳 हिन्दी</button>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="container">
+    <div class="masthead-inner">
+      <span class="masthead-brand">epersie</span>
+      <a href="https://www.amazon.com/-/es/dp/B0DC81RHZP/" target="_blank" rel="noopener"
+         class="masthead-link" data-t="buy_amazon"></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container-wide">
+    <div class="hero-grid">
+      <div class="hero-book fade-up delay-1">
+        <div class="hero-book-cover">
+          <div class="cover-rule"></div>
+          <div class="cover-title-main">LA<br>MANGA</div>
+          <div class="cover-rule-mid"></div>
+          <div class="cover-subtitle-text" data-t="subtitle"></div>
+          <svg class="cover-illustration" width="120" height="90" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="rgba(247,243,236,0.6)" stroke-width="1.5" stroke-linecap="round" d="M10,180 Q80,172 150,178 Q220,184 290,176"/>
+            <line x1="60" y1="180" x2="60" y2="128" stroke="rgba(247,243,236,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="40,140 60,105 80,140" fill="none" stroke="rgba(247,243,236,0.45)" stroke-width="1.5"/>
+            <polygon points="38,155 60,115 82,155" fill="none" stroke="rgba(247,243,236,0.35)" stroke-width="1.2"/>
+            <line x1="230" y1="180" x2="230" y2="130" stroke="rgba(247,243,236,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="210,142 230,107 250,142" fill="none" stroke="rgba(247,243,236,0.45)" stroke-width="1.5"/>
+            <path fill="none" stroke="rgba(247,243,236,0.35)" stroke-width="1.5" stroke-linecap="round" d="M148,108 Q145,135 143,158 Q141,170 140,180"/>
+            <path fill="none" stroke="rgba(247,243,236,0.35)" stroke-width="1.5" stroke-linecap="round" d="M158,108 Q160,135 162,158 Q163,170 164,180"/>
+            <path fill="none" stroke="rgba(247,243,236,0.25)" stroke-width="1" stroke-linecap="round" d="M142,130 Q152,127 162,130"/>
+            <circle cx="115" cy="148" r="10" fill="none" stroke="rgba(247,243,236,0.6)" stroke-width="1.5"/>
+            <path fill="none" stroke="rgba(247,243,236,0.55)" stroke-width="1.8" stroke-linecap="round" d="M115,158 L113,175 M115,158 L118,175"/>
+            <path fill="none" stroke="rgba(247,243,236,0.45)" stroke-width="1.5" stroke-linecap="round" d="M107,162 L115,155 L124,162"/>
+            <circle cx="80" cy="55" r="2" fill="rgba(247,243,236,0.5)"/>
+            <circle cx="150" cy="40" r="2.5" fill="rgba(247,243,236,0.6)"/>
+            <circle cx="220" cy="60" r="1.8" fill="rgba(247,243,236,0.45)"/>
+            <circle cx="260" cy="45" r="2" fill="rgba(247,243,236,0.5)"/>
+            <polygon points="192,68 202,85 192,102 182,85" fill="none" stroke="rgba(247,243,236,0.45)" stroke-width="1.5"/>
+            <path fill="none" stroke="rgba(247,243,236,0.3)" stroke-width="1" d="M192,102 Q185,115 188,128 Q184,138 180,148"/>
+          </svg>
+          <div class="cover-rule-bot"></div>
+          <div class="cover-author">epersie · 2026</div>
+        </div>
+        <div class="hero-badge" data-t="on_amazon"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-kicker fade-up delay-1" data-t="kicker"></div>
+        <h1 class="hero-title fade-up delay-2">La Manga<br><em data-t="subtitle"></em></h1>
+        <p class="hero-subtitle fade-up delay-3" data-t="hero_written"></p>
+        <p class="hero-body fade-up delay-4" data-t="hero_body"></p>
+        <div class="hero-cta fade-up delay-5">
+          <a href="https://www.amazon.com/-/es/dp/B0DC81RHZP/" target="_blank" rel="noopener"
+             class="btn" data-t="buy_amazon"></a>
+          <span class="hero-price" data-t="price"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- PULL QUOTE -->
+<div class="banner-quote reveal">
+  <div class="container">
+    <blockquote>
+      <span data-t="quote_text"></span>
+      <cite data-t="quote_src"></cite>
+    </blockquote>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section reveal">
+  <div class="container">
+    <div class="section-label" data-t="problem_label"></div>
+    <h2 class="section-title" data-t="problem_title"></h2>
+    <p style="color:var(--muted);font-size:16px;margin-bottom:28px;max-width:560px" data-t="problem_intro"></p>
+    <ul class="problem-list" id="problem-list"></ul>
+    <p style="margin-top:28px;font-size:16px;color:var(--muted);font-style:italic;max-width:520px"
+       data-t="problem_coda"></p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- TRANSFORMATION -->
+<section class="section section-alt reveal">
+  <div class="container">
+    <div class="section-label" data-t="transform_label"></div>
+    <h2 class="section-title" data-t="transform_title"></h2>
+    <div class="transform-grid">
+      <div class="transform-card">
+        <div class="transform-label" data-t="before"></div>
+        <ul id="before-list"></ul>
+      </div>
+      <div class="transform-card after">
+        <div class="transform-label" data-t="after"></div>
+        <ul id="after-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENTS -->
+<section class="section reveal">
+  <div class="container">
+    <div class="section-label" data-t="contents_label"></div>
+    <h2 class="section-title" data-t="contents_title"></h2>
+    <div id="contents-list"></div>
+  </div>
+</section>
+
+<!-- EXCERPT -->
+<section class="section section-alt reveal">
+  <div class="container">
+    <div class="section-label" data-t="excerpt_label"></div>
+    <div class="excerpt-box">
+      <p class="excerpt-text" data-t="excerpt_text"></p>
+      <p class="excerpt-source" data-t="excerpt_source"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 DAYS -->
+<section class="section reveal">
+  <div class="container">
+    <div class="section-label" data-t="days_label"></div>
+    <h2 class="section-title" data-t="days_title"></h2>
+    <p style="color:var(--muted);font-size:16px;margin-bottom:0;max-width:540px" data-t="days_intro"></p>
+    <div class="days-grid" id="days-grid"></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- FOR WHOM -->
+<section class="section section-alt reveal">
+  <div class="container">
+    <div class="section-label" data-t="forwhom_label"></div>
+    <h2 class="section-title" data-t="forwhom_title"></h2>
+    <div class="for-whom-grid">
+      <div class="for-whom-col for-col-yes">
+        <h3 data-t="forwhom_yes_title"></h3>
+        <ul id="forwhom-yes"></ul>
+      </div>
+      <div class="for-whom-col for-col-no">
+        <h3 data-t="forwhom_no_title"></h3>
+        <ul id="forwhom-no"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="section reveal">
+  <div class="container">
+    <div class="section-label" data-t="author_label"></div>
+    <div class="author-grid">
+      <div class="author-initials">e</div>
+      <div>
+        <h2 class="author-name">epersie</h2>
+        <div class="author-meta" data-t="author_meta"></div>
+        <div class="author-bio" id="author-bio"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta reveal">
+  <div class="container" style="position:relative;z-index:1">
+    <h2 class="final-cta-title" data-t="cta_title"></h2>
+    <p class="final-cta-sub" data-t="cta_sub"></p>
+    <a href="https://www.amazon.com/-/es/dp/B0DC81RHZP/" target="_blank" rel="noopener"
+       class="btn btn-cream" data-t="buy_amazon"></a>
+    <p class="final-price" data-t="cta_price"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span>© epersie, 2026 · La Manga</span>
+      <a href="https://www.amazon.com/-/es/dp/B0DC81RHZP/" target="_blank" rel="noopener"
+         data-t="footer_link"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const AMAZON_LINKS = {
+  es: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0DC81RHZP',
+  en: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX2DWW8T',
+  pt: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX36BW6K',
+  fr: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX2WS6Q5',
+  it: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX2ZX5S1',
+  de: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX4XR7GK',
+  zh: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX2J2RX8',
+  ja: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX35C7RL',
+  ko: 'https://www.amazon.com/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX37QDV4',
+  hi: 'https://www.amazon.com/-/es/Esteban-P%C3%A9rez-Sierra-ebook/dp/B0GX2R59JS',
+};
+const AMAZON = AMAZON_LINKS['es'];
+
+const T = {
+  es: {
+    subtitle:       'El niño que llevamos dentro',
+    kicker:         'Colombia · Bello, Antioquia · 1984',
+    hero_written:   'Una historia verdadera escrita a los dieciséis años.',
+    hero_body:      'Un niño llega a un barrio nuevo. Encuentra una cañadita, un amigo, una manga llena de árboles y arcilla. Y sin saberlo, aprende todo lo que importa. Este libro es esa historia — y una invitación a que el adulto que la lee recupere al niño que creía haber perdido.',
+    buy_amazon:     'Comprar en Amazon →',
+    on_amazon:      'Disponible en Amazon',
+    price:          'Tapa blanda · $19.99 USD',
+    quote_text:     '"En 1995, Colombia sangraba. Y los niños de La Cabaña seguían elevando cometas. Eso no es locura. Eso es esperanza."',
+    quote_src:      '— del libro',
+    problem_label:  'El problema',
+    problem_title:  '¿Cuándo fue la última vez que jugaste sin propósito?',
+    problem_intro:  'En algún momento entre la infancia y hoy, algo se fue cerrando. Despacio, silenciosamente.',
+    problem_items:  ['¿Cuándo fue la última vez que construiste algo con las manos solo porque querías?','¿Cuándo fue la última vez que te asombraste de verdad ante algo pequeño?','¿Cuándo fue la última vez que corriste sin ir a ningún lado?','¿Cuándo fue la última vez que compartiste comida alrededor de un fuego?','¿Cuándo fue la última vez que te permitiste no tener un plan?'],
+    problem_coda:   'Si no recuerdas la respuesta, este libro es para ti.',
+    transform_label:'La transformación',
+    transform_title:'Antes y después de leerlo',
+    before:         'Antes',
+    after:          'Después',
+    before_items:   ['Sensación de que algo falta sin saber qué','La vida adulta como única realidad posible','El juego como "pérdida de tiempo"','La infancia como algo que se quedó atrás','La seriedad como sinónimo de madurez'],
+    after_items:    ['Reconocimiento de lo que todavía vive en ti','El presente como el lugar más rico que existe','El juego como la escuela más completa','La infancia como recurso, no como nostalgia','El niño y el adulto, de la mano'],
+    contents_label: 'Lo que encontrarás dentro',
+    contents_title: 'Cuatro partes.\nUna sola dirección.',
+    contents:       [{t:'La Manga — Una historia verdadera',d:'La historia real de la cañadita, Don Juan, la choza con túneles, los juegos y el día que llegaron las retroexcavadoras.'},{t:'El tejido invisible de la infancia',d:'Lo que la calle enseñó. El cielo y las estrellas. La música. La casa y los padres.'},{t:'El niño que no se fue',d:'Qué es el niño interior. La pureza, la nobleza, el amor como fundamentos reales.'},{t:'El Plan de los 7 Días',d:'Acciones concretas para despertar al niño interior. Siete desafíos que cualquier persona puede empezar hoy.'}],
+    excerpt_label:  'Un fragmento del libro',
+    excerpt_text:   'Cuando dejó de llover, fuimos allá —Fempo y yo— y nos pusimos a ver qué era. Era una cañadita: un caño pequeño, un hilo de agua nacido de las faldas del cerro. Y en ese mismo momento nos pusimos a coger arcilla toda la tarde. Éramos dos niños y teníamos arcilla entre los dedos. No hacía falta nada más.',
+    excerpt_source: '— Capítulo II, La Manga (1995/2026)',
+    days_label:     'El Plan de los 7 Días',
+    days_title:     'Una semana para despertar al niño interior',
+    days_intro:     'No se necesita dinero. No se necesitan condiciones perfectas. Solo ganas.',
+    days:           ['Regresar a la calle','Construir con las manos','El juego sin propósito','La naturaleza cercana','La fritanga y el compartir','La carta al niño que fuiste','El compromiso de seguir'],
+    forwhom_label:  'Para quién es este libro',
+    forwhom_title:  'Honestamente',
+    forwhom_yes_title:'Este libro es para ti si…',
+    forwhom_no_title:'No es para ti si…',
+    forwhom_yes:    ['Sientes que perdiste algo de ti al crecer','Recuerdas tu infancia con emoción','Quieres estar más presente en tu vida','Tienes hijos y quieres conectar','Tu infancia fue difícil y quieres sanarla','Necesitas un respiro del mundo adulto'],
+    forwhom_no:     ['Buscas un manual técnico de psicología','No tienes curiosidad por tu pasado','Crees que la nostalgia es una debilidad','Prefieres solo la ficción pura'],
+    author_label:   'El autor',
+    author_meta:    'Medellín, Colombia · 1979',
+    author_bio:     ['Nació en 1979 en Colombia. Creció en el barrio La Cabaña en Bello, Antioquia. Emprendedor, explorador de ideas, apasionado por la astronomía, la música y las historias de las personas.','Escribió este libro a los dieciséis años en un cuaderno prestado. Esas páginas sobrevivieron treinta años dobladas en una carpeta. Este libro es lo que pasó cuando las volvió a abrir.'],
+    cta_title:      'El niño que fuiste sigue dentro de ti.\nEste libro va a buscarlo.',
+    cta_sub:        'Disponible ahora en Amazon.\nTapa blanda · 6×9 pulgadas · Español',
+    cta_price:      '$19.99 USD · Envío disponible a todo el mundo',
+    footer_link:    'Ver en Amazon →',
+  },
+  en: {
+    subtitle:       'The child we carry within',
+    kicker:         'Colombia · Bello, Antioquia · 1984',
+    hero_written:   'A true story written at the age of sixteen.',
+    hero_body:      'A boy arrives in a new neighborhood. He finds a little stream, a friend, a meadow full of trees and clay. Without knowing it, he learns everything that matters. This book is that story — and an invitation for the adult who reads it to recover the child they thought they had lost.',
+    buy_amazon:     'Buy on Amazon →',
+    on_amazon:      'Available on Amazon',
+    price:          'Paperback · $19.99 USD',
+    quote_text:     '"In 1995, Colombia was bleeding. And the children of La Cabaña kept flying kites. That is not madness. That is hope."',
+    quote_src:      '— from the book',
+    problem_label:  'The problem',
+    problem_title:  'When was the last time you played with no purpose?',
+    problem_intro:  'At some point between childhood and today, something slowly closed. Quietly, without announcement.',
+    problem_items:  ['When was the last time you built something with your hands just because you wanted to?','When was the last time you were truly amazed by something small?','When was the last time you ran without going anywhere?','When was the last time you shared food around a fire?','When was the last time you allowed yourself to have no plan?'],
+    problem_coda:   'If you cannot remember the answer, this book is for you.',
+    transform_label:'The transformation',
+    transform_title:'Before and after reading it',
+    before:         'Before',
+    after:          'After',
+    before_items:   ['A feeling that something is missing, without knowing what','Adult life as the only possible reality','Play as a "waste of time"','Childhood as something left behind','Seriousness as a synonym for maturity'],
+    after_items:    ['Recognition of what still lives within you','The present as the richest place that exists','Play as the most complete school','Childhood as a resource, not just nostalgia','The child and the adult, hand in hand'],
+    contents_label: 'What you will find inside',
+    contents_title: 'Four parts.\nOne direction.',
+    contents:       [{t:'La Manga — A true story',d:'The real story of the little stream, Don Juan and his cows, the hideout with tunnels, the games, and the day the excavators arrived.'},{t:'The invisible fabric of childhood',d:'What the street taught. The sky and the stars. The music. The home and the parents.'},{t:'The child who never left',d:'What the inner child is. Purity, nobility, love as real foundations.'},{t:'The 7-Day Plan',d:'Concrete actions to awaken the inner child. Seven challenges anyone can start today.'}],
+    excerpt_label:  'A passage from the book',
+    excerpt_text:   'When the rain stopped, we went there — Fempo and I — to see what it was. It was a little stream: a small channel, a thread of water born from the hillside. And right then and there we started gathering clay all afternoon. We were two boys with clay between our fingers. Nothing more was needed.',
+    excerpt_source: '— Chapter II, La Manga (1995/2026)',
+    days_label:     'The 7-Day Plan',
+    days_title:     'One week to awaken the inner child',
+    days_intro:     'No money needed. No perfect conditions. Just willingness.',
+    days:           ['Return to the street','Build with your hands','Purposeless play','Nature nearby','The cookfire and sharing','The letter to the child you were','The commitment to continue'],
+    forwhom_label:  'Who this book is for',
+    forwhom_title:  'Honestly',
+    forwhom_yes_title:'This book is for you if…',
+    forwhom_no_title:'It is not for you if…',
+    forwhom_yes:    ['You feel you lost something of yourself as you grew up','You remember your childhood with emotion','You want to be more present in your life','You have children and want to connect','Your childhood was difficult and you want to heal it','You need a break from the adult world'],
+    forwhom_no:     ['You are looking for a technical psychology manual','You have no curiosity about your past','You believe nostalgia is a weakness','You prefer pure fiction only'],
+    author_label:   'About the author',
+    author_meta:    'Medellín, Colombia · 1979',
+    author_bio:     ['Born in 1979 in Colombia. Grew up in the La Cabaña neighborhood in Bello, Antioquia. Entrepreneur, explorer of ideas, passionate about astronomy, music, and people\'s stories.','He wrote this book at sixteen in a borrowed notebook. Those pages survived thirty years folded in a folder. This book is what happened when he opened them again.'],
+    cta_title:      'The child you were is still inside you.\nThis book will go looking for them.',
+    cta_sub:        'Available now on Amazon.\nPaperback · 6×9 inches · Spanish',
+    cta_price:      '$19.99 USD · Ships worldwide',
+    footer_link:    'View on Amazon →',
+  },
+  pt: {
+    subtitle:       'A criança que carregamos dentro',
+    kicker:         'Colômbia · Bello, Antioquia · 1984',
+    hero_written:   'Uma história verdadeira escrita aos dezesseis anos.',
+    hero_body:      'Um menino chega a um bairro novo. Encontra um riacho, um amigo, um campo cheio de árvores e argila. Sem saber, aprende tudo o que importa. Este livro é essa história — e um convite para que o adulto que a lê recupere a criança que acreditava ter perdido.',
+    buy_amazon:     'Comprar na Amazon →',
+    on_amazon:      'Disponível na Amazon',
+    price:          'Brochura · $19.99 USD',
+    quote_text:     '"Em 1995, a Colômbia sangrava. E as crianças de La Cabaña continuavam soltando pipas. Isso não é loucura. Isso é esperança."',
+    quote_src:      '— do livro',
+    problem_label:  'O problema',
+    problem_title:  'Quando foi a última vez que você brincou sem propósito?',
+    problem_intro:  'Em algum momento entre a infância e hoje, algo foi se fechando. Devagar, silenciosamente.',
+    problem_items:  ['Quando foi a última vez que você construiu algo com as mãos só porque queria?','Quando foi a última vez que você se maravilhou de verdade com algo pequeno?','Quando foi a última vez que você correu sem ir a lugar nenhum?','Quando foi a última vez que você compartilhou comida ao redor de uma fogueira?','Quando foi a última vez que você se permitiu não ter plano?'],
+    problem_coda:   'Se você não lembra a resposta, este livro é para você.',
+    transform_label:'A transformação',
+    transform_title:'Antes e depois de ler',
+    before:         'Antes',
+    after:          'Depois',
+    before_items:   ['Sensação de que algo falta sem saber o quê','A vida adulta como única realidade possível','Brincar como "perda de tempo"','A infância como algo que ficou para trás','A seriedade como sinônimo de maturidade'],
+    after_items:    ['Reconhecimento do que ainda vive em você','O presente como o lugar mais rico que existe','Brincar como a escola mais completa','A infância como recurso, não nostalgia','A criança e o adulto, de mãos dadas'],
+    contents_label: 'O que você encontrará dentro',
+    contents_title: 'Quatro partes.\nUma única direção.',
+    contents:       [{t:'La Manga — Uma história verdadeira',d:'A história real do riacho, Don Juan e suas vacas, a cabana com túneis, as brincadeiras e o dia em que chegaram as escavadeiras.'},{t:'O tecido invisível da infância',d:'O que a rua ensinou. O céu e as estrelas. A música. A casa e os pais.'},{t:'A criança que nunca foi embora',d:'O que é a criança interior. Pureza, nobreza, amor como fundamentos reais.'},{t:'O Plano de 7 Dias',d:'Ações concretas para despertar a criança interior. Sete desafios que qualquer pessoa pode começar hoje.'}],
+    excerpt_label:  'Um trecho do livro',
+    excerpt_text:   'Quando a chuva parou, fomos até lá — Fempo e eu — para ver o que era. Era um riacho: um pequeno canal, um fio de água nascido das encostas do morro. E naquele momento mesmo começamos a pegar argila a tarde toda. Éramos dois meninos com argila entre os dedos. Não precisava de mais nada.',
+    excerpt_source: '— Capítulo II, La Manga (1995/2026)',
+    days_label:     'O Plano de 7 Dias',
+    days_title:     'Uma semana para despertar a criança interior',
+    days_intro:     'Não precisa de dinheiro. Não precisa de condições perfeitas. Só vontade.',
+    days:           ['Voltar à rua','Construir com as mãos','Brincadeira sem propósito','A natureza perto','A fogueira e o compartilhar','A carta à criança que você foi','O compromisso de continuar'],
+    forwhom_label:  'Para quem é este livro',
+    forwhom_title:  'Com honestidade',
+    forwhom_yes_title:'Este livro é para você se…',
+    forwhom_no_title:'Não é para você se…',
+    forwhom_yes:    ['Você sente que perdeu algo de si ao crescer','Você recorda sua infância com emoção','Você quer estar mais presente em sua vida','Você tem filhos e quer se conectar','Sua infância foi difícil e você quer curá-la','Você precisa de um respiro do mundo adulto'],
+    forwhom_no:     ['Você busca um manual técnico de psicologia','Você não tem curiosidade sobre seu passado','Você acredita que nostalgia é uma fraqueza','Você prefere apenas ficção pura'],
+    author_label:   'O autor',
+    author_meta:    'Medellín, Colômbia · 1979',
+    author_bio:     ['Nasceu em 1979 na Colômbia. Cresceu no bairro La Cabaña em Bello, Antioquia. Empreendedor, explorador de ideias, apaixonado por astronomia, música e as histórias das pessoas.','Escreveu este livro aos dezesseis anos num caderno emprestado. Essas páginas sobreviveram trinta anos dobradas numa pasta. Este livro é o que aconteceu quando ele as abriu novamente.'],
+    cta_title:      'A criança que você foi ainda está dentro de você.\nEste livro vai procurá-la.',
+    cta_sub:        'Disponível agora na Amazon.\nBrochura · Espanhol',
+    cta_price:      '$19.99 USD · Envio para todo o mundo',
+    footer_link:    'Ver na Amazon →',
+  },
+  fr: {
+    subtitle:       "L'enfant que nous portons en nous",
+    kicker:         'Colombie · Bello, Antioquia · 1984',
+    hero_written:   'Une histoire vraie écrite à seize ans.',
+    hero_body:      "Un enfant arrive dans un nouveau quartier. Il trouve un ruisseau, un ami, un pré rempli d'arbres et d'argile. Sans le savoir, il apprend tout ce qui compte. Ce livre est cette histoire — et une invitation à l'adulte qui le lit à retrouver l'enfant qu'il croyait avoir perdu.",
+    buy_amazon:     'Acheter sur Amazon →',
+    on_amazon:      'Disponible sur Amazon',
+    price:          'Broché · $19.99 USD',
+    quote_text:     '"En 1995, la Colombie saignait. Et les enfants de La Cabaña continuaient à faire voler des cerfs-volants. Ce n\'est pas de la folie. C\'est de l\'espoir."',
+    quote_src:      '— du livre',
+    problem_label:  'Le problème',
+    problem_title:  'Quand avez-vous joué pour la dernière fois sans but ?',
+    problem_intro:  "À un moment donné entre l'enfance et aujourd'hui, quelque chose s'est fermé. Lentement, silencieusement.",
+    problem_items:  ["Quand avez-vous construit quelque chose de vos mains pour le seul plaisir de le faire ?","Quand vous êtes-vous vraiment émerveillé devant quelque chose de petit ?","Quand avez-vous couru sans aller nulle part ?","Quand avez-vous partagé un repas autour d'un feu ?","Quand vous êtes-vous permis de n'avoir aucun plan ?"],
+    problem_coda:   'Si vous ne vous souvenez pas de la réponse, ce livre est pour vous.',
+    transform_label:'La transformation',
+    transform_title:'Avant et après la lecture',
+    before:         'Avant',
+    after:          'Après',
+    before_items:   ["Sentiment qu'il manque quelque chose sans savoir quoi","La vie adulte comme seule réalité possible","Le jeu comme « perte de temps »","L'enfance comme quelque chose de révolu","Le sérieux comme synonyme de maturité"],
+    after_items:    ['Reconnaissance de ce qui vit encore en vous','Le présent comme le lieu le plus riche qui soit','Le jeu comme l\'école la plus complète','L\'enfance comme ressource, pas comme nostalgie','L\'enfant et l\'adulte, main dans la main'],
+    contents_label: "Ce que vous trouverez à l'intérieur",
+    contents_title: 'Quatre parties.\nUne seule direction.',
+    contents:       [{t:'La Manga — Une histoire vraie',d:"L'histoire réelle du ruisseau, de Don Juan et ses vaches, de la cabane avec tunnels, des jeux et du jour où les pelleteuses sont arrivées."},{t:"Le tissu invisible de l'enfance",d:'Ce que la rue a enseigné. Le ciel et les étoiles. La musique. La maison et les parents.'},{t:"L'enfant qui n'est jamais parti",d:"Qu'est-ce que l'enfant intérieur. La pureté, la noblesse, l'amour comme fondements réels."},{t:'Le Plan des 7 Jours',d:"Des actions concrètes pour éveiller l'enfant intérieur. Sept défis que n'importe qui peut commencer aujourd'hui."}],
+    excerpt_label:  'Un extrait du livre',
+    excerpt_text:   "Quand la pluie s'est arrêtée, nous y sommes allés — Fempo et moi — pour voir ce que c'était. C'était un petit ruisseau : un mince filet d'eau né des flancs de la colline. Et à ce moment même, nous avons commencé à ramasser de l'argile tout l'après-midi. Nous étions deux enfants avec de l'argile entre les doigts. Il ne fallait rien de plus.",
+    excerpt_source: '— Chapitre II, La Manga (1995/2026)',
+    days_label:     'Le Plan des 7 Jours',
+    days_title:     "Une semaine pour éveiller l'enfant intérieur",
+    days_intro:     "Pas besoin d'argent. Pas besoin de conditions parfaites. Juste de la volonté.",
+    days:           ['Retour dans la rue','Construire avec ses mains','Le jeu sans but','La nature proche','Le feu et le partage','La lettre à l\'enfant que vous étiez','L\'engagement de continuer'],
+    forwhom_label:  'Pour qui est ce livre',
+    forwhom_title:  'Honnêtement',
+    forwhom_yes_title:'Ce livre est pour vous si…',
+    forwhom_no_title:"Ce n'est pas pour vous si…",
+    forwhom_yes:    ['Vous sentez avoir perdu quelque chose de vous en grandissant',"Vous vous souvenez de votre enfance avec émotion",'Vous voulez être plus présent dans votre vie','Vous avez des enfants et voulez vous connecter','Votre enfance a été difficile et vous voulez guérir',"Vous avez besoin d'un répit du monde adulte"],
+    forwhom_no:     ['Vous cherchez un manuel technique de psychologie','Vous n\'avez aucune curiosité pour votre passé','Vous croyez que la nostalgie est une faiblesse','Vous préférez uniquement la fiction pure'],
+    author_label:   "L'auteur",
+    author_meta:    'Medellín, Colombie · 1979',
+    author_bio:     ["Né en 1979 en Colombie. A grandi dans le quartier La Cabaña à Bello, Antioquia. Entrepreneur, explorateur d'idées, passionné d'astronomie, de musique et des histoires des gens.","Il a écrit ce livre à seize ans dans un cahier emprunté. Ces pages ont survécu trente ans pliées dans un dossier. Ce livre est ce qui s'est passé quand il les a rouvertes."],
+    cta_title:      "L'enfant que vous étiez est encore en vous.\nCe livre va le chercher.",
+    cta_sub:        'Disponible maintenant sur Amazon.\nBroché · Espagnol',
+    cta_price:      '$19.99 USD · Livraison mondiale',
+    footer_link:    'Voir sur Amazon →',
+  },
+  it: {
+    subtitle:       'Il bambino che portiamo dentro',
+    kicker:         'Colombia · Bello, Antioquia · 1984',
+    hero_written:   'Una storia vera scritta a sedici anni.',
+    hero_body:      "Un bambino arriva in un nuovo quartiere. Trova un ruscello, un amico, un prato pieno di alberi e argilla. Senza saperlo, impara tutto ciò che conta. Questo libro è quella storia — e un invito all'adulto che la legge a ritrovare il bambino che credeva di aver perso.",
+    buy_amazon:     'Acquista su Amazon →',
+    on_amazon:      'Disponibile su Amazon',
+    price:          'Brossura · $19.99 USD',
+    quote_text:     '"Nel 1995, la Colombia sanguinava. E i bambini di La Cabaña continuavano a far volare gli aquiloni. Non è follia. È speranza."',
+    quote_src:      '— dal libro',
+    problem_label:  'Il problema',
+    problem_title:  "Quando è stata l'ultima volta che hai giocato senza scopo?",
+    problem_intro:  "A un certo punto tra l'infanzia e oggi, qualcosa si è chiuso. Lentamente, silenziosamente.",
+    problem_items:  ["Quando è stata l'ultima volta che hai costruito qualcosa con le mani solo perché volevi?","Quando è stata l'ultima volta che ti sei meravigliato davvero di qualcosa di piccolo?","Quando è stata l'ultima volta che hai corso senza andare da nessuna parte?","Quando è stata l'ultima volta che hai condiviso cibo attorno a un fuoco?","Quando è stata l'ultima volta che ti sei permesso di non avere un piano?"],
+    problem_coda:   'Se non ricordi la risposta, questo libro è per te.',
+    transform_label:'La trasformazione',
+    transform_title:'Prima e dopo averlo letto',
+    before:         'Prima',
+    after:          'Dopo',
+    before_items:   ['Sensazione che manchi qualcosa senza sapere cosa','La vita adulta come unica realtà possibile','Il gioco come "perdita di tempo"',"L'infanzia come qualcosa rimasto indietro",'La serietà come sinonimo di maturità'],
+    after_items:    ['Riconoscimento di ciò che vive ancora in te','Il presente come il luogo più ricco che esista','Il gioco come la scuola più completa',"L'infanzia come risorsa, non nostalgia",'Il bambino e l\'adulto, mano nella mano'],
+    contents_label: 'Cosa troverai dentro',
+    contents_title: 'Quattro parti.\nUna sola direzione.',
+    contents:       [{t:'La Manga — Una storia vera',d:'La storia reale del ruscello, Don Juan e le sue vacche, la capanna con tunnel, i giochi e il giorno in cui arrivarono le ruspe.'},{t:"Il tessuto invisibile dell'infanzia",d:'Cosa ha insegnato la strada. Il cielo e le stelle. La musica. La casa e i genitori.'},{t:'Il bambino che non se ne è andato',d:"Cos'è il bambino interiore. Purezza, nobiltà, amore come fondamenti reali."},{t:'Il Piano dei 7 Giorni',d:'Azioni concrete per risvegliare il bambino interiore. Sette sfide che chiunque può iniziare oggi.'}],
+    excerpt_label:  'Un brano dal libro',
+    excerpt_text:   "Quando smise di piovere, andammo lì — Fempo e io — per vedere che cosa fosse. Era un ruscelletto: un piccolo canale, un filo d'acqua nato dai fianchi della collina. E in quel momento stesso cominciammo a raccogliere argilla per tutto il pomeriggio. Eravamo due bambini con l'argilla tra le dita. Non serviva nient'altro.",
+    excerpt_source: '— Capitolo II, La Manga (1995/2026)',
+    days_label:     'Il Piano dei 7 Giorni',
+    days_title:     'Una settimana per risvegliare il bambino interiore',
+    days_intro:     'Non servono soldi. Non servono condizioni perfette. Solo voglia.',
+    days:           ['Tornare in strada','Costruire con le mani','Il gioco senza scopo','La natura vicina','Il fuoco e la condivisione','La lettera al bambino che eri','L\'impegno a continuare'],
+    forwhom_label:  'Per chi è questo libro',
+    forwhom_title:  'Onestamente',
+    forwhom_yes_title:'Questo libro è per te se…',
+    forwhom_no_title:'Non è per te se…',
+    forwhom_yes:    ['Senti di aver perso qualcosa di te crescendo','Ricordi la tua infanzia con emozione','Vuoi essere più presente nella tua vita','Hai figli e vuoi connetterti con loro','La tua infanzia è stata difficile e vuoi guarire',"Hai bisogno di una pausa dal mondo adulto"],
+    forwhom_no:     ['Cerchi un manuale tecnico di psicologia','Non hai curiosità per il tuo passato','Credi che la nostalgia sia una debolezza','Preferisci solo la narrativa pura'],
+    author_label:   "L'autore",
+    author_meta:    'Medellín, Colombia · 1979',
+    author_bio:     ["Nato nel 1979 in Colombia. Cresciuto nel quartiere La Cabaña a Bello, Antioquia. Imprenditore, esploratore di idee, appassionato di astronomia, musica e storie delle persone.","Ha scritto questo libro a sedici anni su un quaderno prestato. Quelle pagine sono sopravvissute trent'anni piegate in una cartella. Questo libro è ciò che è successo quando le ha riaperte."],
+    cta_title:      'Il bambino che eri è ancora dentro di te.\nQuesto libro andrà a cercarlo.',
+    cta_sub:        'Disponibile ora su Amazon.\nBrossura · Spagnolo',
+    cta_price:      '$19.99 USD · Spedizione in tutto il mondo',
+    footer_link:    'Vedi su Amazon →',
+  },
+  de: {
+    subtitle:       'Das Kind, das wir in uns tragen',
+    kicker:         'Kolumbien · Bello, Antioquia · 1984',
+    hero_written:   'Eine wahre Geschichte, geschrieben mit sechzehn Jahren.',
+    hero_body:      'Ein Junge kommt in ein neues Viertel. Er findet einen Bach, einen Freund, eine Wiese voller Bäume und Ton. Ohne es zu wissen, lernt er alles, was zählt. Dieses Buch erzählt diese Geschichte — und lädt den Erwachsenen, der es liest, ein, das Kind zurückzufinden, das er verloren glaubte.',
+    buy_amazon:     'Bei Amazon kaufen →',
+    on_amazon:      'Bei Amazon erhältlich',
+    price:          'Taschenbuch · $19.99 USD',
+    quote_text:     '"1995 blutete Kolumbien. Und die Kinder von La Cabaña flogen weiter ihre Drachen. Das ist kein Wahnsinn. Das ist Hoffnung."',
+    quote_src:      '— aus dem Buch',
+    problem_label:  'Das Problem',
+    problem_title:  'Wann haben Sie zuletzt ohne Zweck gespielt?',
+    problem_intro:  'Irgendwann zwischen Kindheit und heute hat sich etwas geschlossen. Langsam, still.',
+    problem_items:  ['Wann haben Sie zuletzt etwas mit den Händen gebaut, nur weil Sie es wollten?','Wann haben Sie sich zuletzt wirklich über etwas Kleines gestaunt?','Wann sind Sie zuletzt gerannt, ohne irgendwohin zu gehen?','Wann haben Sie zuletzt Essen rund ums Feuer geteilt?','Wann haben Sie sich zuletzt erlaubt, keinen Plan zu haben?'],
+    problem_coda:   'Wenn Sie die Antwort nicht mehr kennen, ist dieses Buch für Sie.',
+    transform_label:'Die Verwandlung',
+    transform_title:'Vor und nach der Lektüre',
+    before:         'Vorher',
+    after:          'Nachher',
+    before_items:   ['Das Gefühl, dass etwas fehlt, ohne zu wissen was','Das Erwachsenenleben als einzig mögliche Realität','Spielen als „Zeitverschwendung"','Kindheit als etwas, das zurückgeblieben ist','Ernst als Synonym für Reife'],
+    after_items:    ['Erkennung dessen, was noch in Ihnen lebt','Die Gegenwart als der reichste Ort','Spielen als die vollständigste Schule','Kindheit als Ressource, nicht als Nostalgie','Das Kind und der Erwachsene, Hand in Hand'],
+    contents_label: 'Was Sie darin finden',
+    contents_title: 'Vier Teile.\nEine Richtung.',
+    contents:       [{t:'La Manga — Eine wahre Geschichte',d:'Die echte Geschichte des Bachs, Don Juan und seiner Kühe, der Hütte mit Tunneln, der Spiele und des Tages, an dem die Bagger kamen.'},{t:'Das unsichtbare Gewebe der Kindheit',d:'Was die Straße lehrte. Der Himmel und die Sterne. Die Musik. Das Zuhause und die Eltern.'},{t:'Das Kind, das nie ging',d:'Was das innere Kind ist. Reinheit, Würde, Liebe als echte Fundamente.'},{t:'Der 7-Tage-Plan',d:'Konkrete Maßnahmen, um das innere Kind zu wecken. Sieben Herausforderungen, die jeder heute beginnen kann.'}],
+    excerpt_label:  'Ein Ausschnitt aus dem Buch',
+    excerpt_text:   'Als der Regen aufhörte, gingen wir dorthin — Fempo und ich — um zu sehen, was es war. Es war ein kleiner Bach: ein schmaler Wasserkanal, geboren aus den Hängen des Hügels. Und genau in diesem Moment begannen wir, den ganzen Nachmittag Ton zu sammeln. Wir waren zwei Kinder mit Ton zwischen den Fingern. Mehr brauchte es nicht.',
+    excerpt_source: '— Kapitel II, La Manga (1995/2026)',
+    days_label:     'Der 7-Tage-Plan',
+    days_title:     'Eine Woche, um das innere Kind zu wecken',
+    days_intro:     'Kein Geld nötig. Keine perfekten Bedingungen. Nur den Willen.',
+    days:           ['Zurück auf die Straße','Mit den Händen bauen','Zweckloses Spielen','Die Natur in der Nähe','Das Feuer und das Teilen','Der Brief an das Kind, das du warst','Das Versprechen weiterzumachen'],
+    forwhom_label:  'Für wen ist dieses Buch',
+    forwhom_title:  'Ehrlich gesagt',
+    forwhom_yes_title:'Dieses Buch ist für Sie, wenn…',
+    forwhom_no_title:'Es ist nicht für Sie, wenn…',
+    forwhom_yes:    ['Sie das Gefühl haben, beim Aufwachsen etwas von sich verloren zu haben','Sie sich mit Emotion an Ihre Kindheit erinnern','Sie präsenter in Ihrem Leben sein wollen','Sie Kinder haben und sich verbinden möchten','Ihre Kindheit schwierig war und Sie heilen möchten','Sie eine Auszeit von der Erwachsenenwelt brauchen'],
+    forwhom_no:     ['Sie ein technisches Psychologiehandbuch suchen','Sie keine Neugier auf Ihre Vergangenheit haben','Sie glauben, dass Nostalgie eine Schwäche ist','Sie nur reine Fiktion bevorzugen'],
+    author_label:   'Der Autor',
+    author_meta:    'Medellín, Kolumbien · 1979',
+    author_bio:     ['1979 in Kolumbien geboren. Aufgewachsen im Viertel La Cabaña in Bello, Antioquia. Unternehmer, Ideenentdecker, leidenschaftlich für Astronomie, Musik und die Geschichten der Menschen.','Er schrieb dieses Buch mit sechzehn Jahren in einem geliehenen Notizbuch. Diese Seiten überlebten dreißig Jahre gefaltet in einer Mappe. Dieses Buch ist, was passierte, als er sie wieder öffnete.'],
+    cta_title:      'Das Kind, das Sie waren, lebt noch in Ihnen.\nDieses Buch wird es suchen.',
+    cta_sub:        'Jetzt bei Amazon erhältlich.\nTaschenbuch · Spanisch',
+    cta_price:      '$19.99 USD · Weltweiter Versand',
+    footer_link:    'Bei Amazon ansehen →',
+  },
+  zh: {
+    subtitle:       '我们内心深处的孩子',
+    kicker:         '哥伦比亚 · 贝略, 安蒂奥基亚 · 1984年',
+    hero_written:   '一个十六岁少年写下的真实故事。',
+    hero_body:      '一个男孩来到一个新社区。他找到了一条小溪、一个朋友、一片充满树木和泥土的草地。不知不觉中，他学会了一切真正重要的事。这本书就是那段故事——也是对阅读它的成年人的邀请，去找回那个他以为已经失去的孩子。',
+    buy_amazon:     '在亚马逊购买 →',
+    on_amazon:      '亚马逊有售',
+    price:          '平装本 · $19.99 美元',
+    quote_text:     '"1995年，哥伦比亚在流血。而卡巴尼亚的孩子们仍然在放风筝。这不是疯狂。这是希望。"',
+    quote_src:      '——摘自本书',
+    problem_label:  '问题',
+    problem_title:  '你上一次无目的地玩耍是什么时候？',
+    problem_intro:  '在童年与今天之间的某个时刻，某些东西慢慢关闭了。悄无声息。',
+    problem_items:  ['你上一次纯粹因为想要而用双手创造某样东西是什么时候？','你上一次真正为某件微小的事感到惊叹是什么时候？','你上一次漫无目的地奔跑是什么时候？','你上一次围着篝火分享食物是什么时候？','你上一次允许自己没有任何计划是什么时候？'],
+    problem_coda:   '如果你不记得答案，这本书就是为你而写的。',
+    transform_label:'转变',
+    transform_title:'阅读前后的变化',
+    before:         '阅读前',
+    after:          '阅读后',
+    before_items:   ['感觉缺少某些东西，却不知道是什么','成人生活是唯一可能的现实','玩耍是"浪费时间"','童年是遗留在过去的事','严肃是成熟的代名词'],
+    after_items:    ['认识到仍然活在你内心的东西','当下是最丰富的地方','玩耍是最完整的学校','童年是资源，而非仅是怀旧','孩子与成人携手同行'],
+    contents_label: '书中你将发现',
+    contents_title: '四个部分。\n一个方向。',
+    contents:       [{t:'拉曼加 — 一个真实的故事',d:'关于小溪、胡安大叔和他的牛、有隧道的小屋、游戏，以及那天挖掘机到来的真实故事。'},{t:'童年的无形织物',d:'街道教会了我们什么。天空与星星。音乐。家与父母。'},{t:'从未离去的孩子',d:'什么是内心的孩子。纯洁、高尚、爱作为真实的基础。'},{t:'七天计划',d:'唤醒内心孩子的具体行动。任何人今天就可以开始的七个挑战。'}],
+    excerpt_label:  '书中一段文字',
+    excerpt_text:   '雨停之后，我们去了那里——费姆波和我——去看看是什么。那是一条小溪：一条细细的水流，从山坡上诞生。就在那一刻，我们整个下午都在采集泥土。我们是两个手指间夹着泥土的孩子。不需要更多了。',
+    excerpt_source: '——第二章，拉曼加（1995/2026）',
+    days_label:     '七天计划',
+    days_title:     '一周唤醒内心的孩子',
+    days_intro:     '不需要金钱。不需要完美条件。只需要意愿。',
+    days:           ['回到街头','用双手创造','无目的的游戏','身边的自然','篝火与分享','写给曾经的你','继续前行的承诺'],
+    forwhom_label:  '这本书适合谁',
+    forwhom_title:  '诚实地说',
+    forwhom_yes_title:'这本书适合你，如果…',
+    forwhom_no_title:'不适合你，如果…',
+    forwhom_yes:    ['你感到在成长过程中失去了自己的某些东西','你带着情感回忆童年','你想在生活中更加专注当下','你有孩子并想与他们建立连接','你的童年很艰难，你想愈合','你需要从成人世界中喘口气'],
+    forwhom_no:     ['你在寻找心理学技术手册','你对自己的过去没有好奇心','你认为怀旧是一种软弱','你只偏好纯粹的虚构作品'],
+    author_label:   '关于作者',
+    author_meta:    '麦德林，哥伦比亚 · 1979年',
+    author_bio:     ['1979年生于哥伦比亚，在安蒂奥基亚省贝略市的拉卡巴尼亚社区长大。企业家、思想探索者，热衷于天文学、音乐以及倾听人们的故事。','他十六岁时在一本借来的笔记本上写下了这本书。那些页面在文件夹里折叠了三十年。这本书就是他再次打开它们时发生的事情。'],
+    cta_title:      '你曾经的那个孩子仍然在你内心。\n这本书将去寻找他。',
+    cta_sub:        '现在在亚马逊有售。\n平装本 · 西班牙语',
+    cta_price:      '$19.99 美元 · 全球配送',
+    footer_link:    '在亚马逊查看 →',
+  },
+  ja: {
+    subtitle:       '私たちの中に住む子ども',
+    kicker:         'コロンビア · ベジョ, アンティオキア · 1984年',
+    hero_written:   '十六歳のとき書かれた、本当の物語。',
+    hero_body:      '一人の少年が新しい街にやってくる。小川を見つけ、友達を作り、木々と土でいっぱいの草原を発見する。気づかないまま、本当に大切なことをすべて学んでいく。この本はその物語であり、読む大人への招待状です——失ったと思っていた子どもを取り戻すための。',
+    buy_amazon:     'Amazonで購入 →',
+    on_amazon:      'Amazonで販売中',
+    price:          'ペーパーバック · $19.99 USD',
+    quote_text:     '「1995年、コロンビアは傷ついていた。それでもラ・カバーニャの子どもたちは凧を飛ばし続けた。これは狂気ではない。これは希望だ。」',
+    quote_src:      '——本書より',
+    problem_label:  '問題',
+    problem_title:  '最後に目的もなく遊んだのはいつですか？',
+    problem_intro:  '子ども時代と今の間のどこかで、何かがゆっくりと閉じていった。静かに、誰にも気づかれないまま。',
+    problem_items:  ['最後に、ただやりたくて何かを手で作ったのはいつですか？','最後に、小さなことに本当に驚いたのはいつですか？','最後に、どこへ行くでもなく走ったのはいつですか？','最後に、焚き火を囲んで食事を分かち合ったのはいつですか？','最後に、何も計画しないことを自分に許したのはいつですか？'],
+    problem_coda:   '答えが思い出せないなら、この本はあなたのためにあります。',
+    transform_label:'変容',
+    transform_title:'読む前と読んだ後',
+    before:         '読む前',
+    after:          '読んだ後',
+    before_items:   ['何かが足りないという感覚、でも何かわからない','大人の生活だけが唯一の現実','遊びは「時間の無駄」','子ども時代は過ぎ去ったもの','真剣さは成熟の証'],
+    after_items:    ['まだ自分の中に生きているものへの気づき','現在が最も豊かな場所','遊びが最も完全な学校','子ども時代は資源、ただのノスタルジアではない','子どもと大人が手をつないで'],
+    contents_label: '本の中に見つかるもの',
+    contents_title: '四つのパート。\n一つの方向。',
+    contents:       [{t:'ラ・マンガ — 真実の物語',d:'小川、ドン・ファンと彼の牛、トンネルのある小屋、遊び、そして掘削機がやってきた日の本当の話。'},{t:'子ども時代の見えない織物',d:'通りが教えてくれたこと。空と星。音楽。家と両親。'},{t:'去らなかった子ども',d:'内なる子どもとは何か。純粋さ、高潔さ、愛、真の基盤として。'},{t:'7日間のプラン',d:'内なる子どもを目覚めさせる具体的な行動。誰でも今日から始められる7つの挑戦。'}],
+    excerpt_label:  '本からの一節',
+    excerpt_text:   '雨がやんだあと、私たちはそこへ向かいました——フェンポと私で——何があるのか確かめに。それは小さな流れでした。丘の斜面から生まれた細い水の糸。そのとき私たちは午後いっぱい粘土を集め始めました。私たちは指の間に粘土を持つ二人の子どもでした。それ以上は何も必要ありませんでした。',
+    excerpt_source: '——第2章, ラ・マンガ (1995/2026)',
+    days_label:     '7日間のプラン',
+    days_title:     '内なる子どもを目覚めさせる一週間',
+    days_intro:     'お金は不要。完璧な条件も不要。必要なのは意志だけ。',
+    days:           ['通りに戻る','手で作る','目的のない遊び','身近な自然','焚き火と分かち合い','かつての自分への手紙','続けるという約束'],
+    forwhom_label:  'この本は誰のために',
+    forwhom_title:  '正直に言うと',
+    forwhom_yes_title:'あなたに合う本です、もし…',
+    forwhom_no_title:'合わない本です、もし…',
+    forwhom_yes:    ['成長する中で自分の一部を失った気がしている','感情を持って子ども時代を思い出す','人生においてより現在に居たい','子どもがいて、もっと繋がりたい','辛い子ども時代を癒したい','大人の世界から少し離れたい'],
+    forwhom_no:     ['心理学の技術マニュアルを探している','自分の過去に好奇心がない','ノスタルジアは弱さだと思っている','純粋なフィクションだけを好む'],
+    author_label:   '著者について',
+    author_meta:    'メデジン, コロンビア · 1979年',
+    author_bio:     ['1979年コロンビア生まれ。アンティオキア州ベジョのラ・カバーニャ地区で育つ。起業家、アイデアの探求者、天文学・音楽・人々の物語への情熱を持つ。','この本を十六歳のとき、借りたノートに書いた。それらのページはフォルダに折りたたまれたまま三十年を生き延びた。この本は、彼が再びそれを開いたときに起きたことだ。'],
+    cta_title:      'かつてのあなたの子どもは、まだあなたの中にいる。\nこの本がその子を探しに行く。',
+    cta_sub:        '今すぐAmazonで入手可能。\nペーパーバック · スペイン語',
+    cta_price:      '$19.99 USD · 世界中に配送',
+    footer_link:    'Amazonで見る →',
+  },
+  ko: {
+    subtitle:       '우리 안에 사는 아이',
+    kicker:         '콜롬비아 · 벨요, 안티오키아 · 1984년',
+    hero_written:   '열여섯 살에 쓴 진짜 이야기.',
+    hero_body:      '한 소년이 새 동네에 도착한다. 작은 시냇물을 발견하고, 친구를 만들고, 나무와 진흙으로 가득한 들판을 탐험한다. 자신도 모르는 사이, 정말 중요한 모든 것을 배운다. 이 책은 그 이야기이고, 책을 읽는 어른에게 잃었다고 생각했던 아이를 되찾으라는 초대입니다.',
+    buy_amazon:     'Amazon에서 구매 →',
+    on_amazon:      'Amazon에서 판매 중',
+    price:          '페이퍼백 · $19.99 USD',
+    quote_text:     '"1995년, 콜롬비아는 피를 흘렸다. 그런데 라 카바냐의 아이들은 여전히 연을 날렸다. 이건 광기가 아니다. 이건 희망이다."',
+    quote_src:      '— 책에서',
+    problem_label:  '문제',
+    problem_title:  '마지막으로 아무 목적 없이 놀았던 게 언제인가요?',
+    problem_intro:  '어린 시절과 지금 사이 어느 순간, 무언가가 천천히 닫혀갔다. 조용히, 소리 없이.',
+    problem_items:  ['마지막으로 그냥 하고 싶어서 손으로 무언가를 만든 게 언제인가요?','마지막으로 작은 것에 진짜로 감탄한 게 언제인가요?','마지막으로 아무데도 가지 않으면서 달린 게 언제인가요?','마지막으로 불 주위에 둘러앉아 음식을 나눈 게 언제인가요?','마지막으로 계획이 없어도 된다고 자신을 허락한 게 언제인가요?'],
+    problem_coda:   '답이 기억나지 않는다면, 이 책은 당신을 위한 것입니다.',
+    transform_label:'변화',
+    transform_title:'읽기 전과 후',
+    before:         '읽기 전',
+    after:          '읽은 후',
+    before_items:   ['무언가 부족하지만 무엇인지 모르는 느낌','어른의 삶만이 유일한 현실','놀이는 "시간 낭비"','어린 시절은 이미 지나간 것','진지함이 성숙의 동의어'],
+    after_items:    ['아직 내 안에 살아있는 것에 대한 인식','현재가 가장 풍요로운 곳','놀이가 가장 완전한 학교','어린 시절은 자원, 단순한 향수가 아니라','아이와 어른이 손을 잡고'],
+    contents_label: '책 안에서 발견할 것',
+    contents_title: '네 부분.\n하나의 방향.',
+    contents:       [{t:'라 망가 — 진짜 이야기',d:'작은 시냇물, 돈 후안과 그의 소들, 터널이 있는 오두막, 게임들, 그리고 굴착기가 온 날의 진짜 이야기.'},{t:'어린 시절의 보이지 않는 직물',d:'거리가 가르쳐 준 것. 하늘과 별들. 음악. 집과 부모님.'},{t:'떠나지 않은 아이',d:'내면의 아이란 무엇인가. 순수함, 고귀함, 사랑이 진짜 기반으로.'},{t:'7일 계획',d:'내면의 아이를 깨우는 구체적인 행동. 누구나 오늘부터 시작할 수 있는 일곱 가지 도전.'}],
+    excerpt_label:  '책의 한 구절',
+    excerpt_text:   '비가 그쳤을 때, 우리는 거기로 갔다 — 펨포와 나. 무엇인지 보러. 그건 작은 시냇물이었다: 언덕 경사면에서 태어난 가느다란 물줄기. 바로 그 순간 우리는 오후 내내 진흙을 모으기 시작했다. 우리는 손가락 사이에 진흙을 쥔 두 아이였다. 더 이상 아무것도 필요하지 않았다.',
+    excerpt_source: '— 2장, 라 망가 (1995/2026)',
+    days_label:     '7일 계획',
+    days_title:     '내면의 아이를 깨우는 한 주',
+    days_intro:     '돈이 필요 없다. 완벽한 조건도 필요 없다. 오직 의지만.',
+    days:           ['거리로 돌아가기','손으로 만들기','목적 없는 놀이','가까운 자연','모닥불과 나눔','과거의 나에게 편지','계속하겠다는 약속'],
+    forwhom_label:  '이 책은 누구를 위한 것인가',
+    forwhom_title:  '솔직히 말하면',
+    forwhom_yes_title:'이 책이 맞는 분은…',
+    forwhom_no_title:'맞지 않는 분은…',
+    forwhom_yes:    ['자라면서 자신의 일부를 잃었다는 느낌이 있다면','감정을 갖고 어린 시절을 기억한다면','삶에서 더 현재에 있고 싶다면','아이가 있고 더 연결되고 싶다면','힘든 어린 시절을 치유하고 싶다면','어른의 세계에서 잠시 쉬고 싶다면'],
+    forwhom_no:     ['심리학 기술 매뉴얼을 찾고 있다면','자신의 과거에 호기심이 없다면','향수를 약점이라고 생각한다면','순수한 픽션만 선호한다면'],
+    author_label:   '저자에 대해',
+    author_meta:    '메데진, 콜롬비아 · 1979년',
+    author_bio:     ['1979년 콜롬비아 태생. 안티오키아 벨요의 라 카바냐 동네에서 성장. 기업가, 아이디어 탐구자, 천문학·음악·사람들의 이야기에 열정을 가진.','이 책을 열여섯 살에 빌린 공책에 썼다. 그 페이지들은 서른 해 동안 폴더에 접혀 살아남았다. 이 책은 그가 그것을 다시 열었을 때 일어난 일이다.'],
+    cta_title:      '당신이었던 그 아이는 아직 당신 안에 있다.\n이 책이 그 아이를 찾으러 간다.',
+    cta_sub:        '지금 Amazon에서 구매 가능.\n페이퍼백 · 스페인어',
+    cta_price:      '$19.99 USD · 전 세계 배송',
+    footer_link:    'Amazon에서 보기 →',
+  },
+  hi: {
+    subtitle:       'वह बच्चा जो हम सब के भीतर रहता है',
+    kicker:         'कोलंबिया · बेयो, अंतिओकिया · 1984',
+    hero_written:   'सोलह साल की उम्र में लिखी गई एक सच्ची कहानी।',
+    hero_body:      'एक लड़का नए मोहल्ले में आता है। उसे एक छोटी नदी मिलती है, एक दोस्त मिलता है, पेड़ों और मिट्टी से भरा एक मैदान। जाने-अनजाने वह सब कुछ सीख लेता है जो सच में मायने रखता है। यह किताब वही कहानी है — और उस बड़े इंसान के लिए एक न्योता है जो इसे पढ़े, कि वह उस बच्चे को वापस लाए जिसे वह खो चुका समझता था।',
+    buy_amazon:     'Amazon पर खरीदें →',
+    on_amazon:      'Amazon पर उपलब्ध',
+    price:          'पेपरबैक · $19.99 USD',
+    quote_text:     '"1995 में कोलंबिया खून बहा रहा था। और ला काबान्या के बच्चे पतंग उड़ाते रहे। यह पागलपन नहीं है। यह उम्मीद है।"',
+    quote_src:      '— किताब से',
+    problem_label:  'समस्या',
+    problem_title:  'आखिरी बार बिना किसी मकसद के कब खेले थे आप?',
+    problem_intro:  'बचपन और आज के बीच कहीं, कुछ धीरे-धीरे बंद होता गया। चुपचाप, बिना किसी आवाज़ के।',
+    problem_items:  ['आखिरी बार कब अपने हाथों से कुछ बनाया था, सिर्फ इसलिए क्योंकि मन था?','आखिरी बार कब किसी छोटी-सी बात पर सच में हैरान हुए थे?','आखिरी बार कब बिना कहीं जाए बस दौड़े थे?','आखिरी बार कब आग के पास बैठकर किसी के साथ खाना बाँटा था?','आखिरी बार कब खुद को कोई योजना न बनाने की इजाज़त दी थी?'],
+    problem_coda:   'अगर जवाब याद नहीं, तो यह किताब आपके लिए ही है।',
+    transform_label:'बदलाव',
+    transform_title:'पढ़ने से पहले और बाद में',
+    before:         'पहले',
+    after:          'बाद में',
+    before_items:   ['कुछ कमी का एहसास, पर पता नहीं क्या','बड़े होने की ज़िंदगी ही एकमात्र हकीकत','खेलना "वक्त की बर्बादी"','बचपन कुछ पीछे छूट गई चीज़','गंभीरता परिपक्वता का पर्याय'],
+    after_items:    ['पहचान कि अभी भी कुछ जीवित है तुम्हारे भीतर','वर्तमान सबसे समृद्ध जगह है','खेलना सबसे पूरा स्कूल है','बचपन एक संसाधन है, सिर्फ यादें नहीं','बच्चा और बड़ा, हाथ में हाथ'],
+    contents_label: 'किताब के भीतर क्या मिलेगा',
+    contents_title: 'चार हिस्से।\nएक दिशा।',
+    contents:       [{t:'ला मांगा — एक सच्ची कहानी',d:'छोटी नदी, डॉन ख्वान और उनकी गायों, सुरंगों वाली झोंपड़ी, खेलों और उस दिन की असली कहानी जब खुदाई मशीनें आईं।'},{t:'बचपन का अदृश्य ताना-बाना',d:'गली ने क्या सिखाया। आकाश और तारे। संगीत। घर और माँ-बाप।'},{t:'वह बच्चा जो कभी गया नहीं',d:'भीतरी बच्चा क्या है। पवित्रता, कुलीनता, प्रेम असली नींव के रूप में।'},{t:'7 दिनों की योजना',d:'भीतरी बच्चे को जगाने के ठोस कदम। सात चुनौतियाँ जो कोई भी आज शुरू कर सकता है।'}],
+    excerpt_label:  'किताब का एक अंश',
+    excerpt_text:   'जब बारिश रुकी, हम वहाँ गए — फेम्पो और मैं — देखने कि क्या है। वह एक छोटी नदी थी: एक पतली धारा, पहाड़ी की ढलान से जन्मी। और उसी पल हमने पूरी दोपहर मिट्टी इकट्ठा करना शुरू कर दिया। हम दो बच्चे थे, उँगलियों के बीच मिट्टी थी। इससे ज़्यादा कुछ चाहिए ही नहीं था।',
+    excerpt_source: '— अध्याय II, ला मांगा (1995/2026)',
+    days_label:     '7 दिनों की योजना',
+    days_title:     'भीतरी बच्चे को जगाने का एक हफ्ता',
+    days_intro:     'पैसों की ज़रूरत नहीं। एकदम सही हालात की भी नहीं। बस हौसले की।',
+    days:           ['गली में वापस','हाथों से कुछ बनाओ','बिना मकसद का खेल','पास की प्रकृति','आग और बाँटना','उस बच्चे को चिट्ठी','जारी रखने का वादा'],
+    forwhom_label:  'यह किताब किसके लिए है',
+    forwhom_title:  'सच कहें तो',
+    forwhom_yes_title:'यह किताब आपके लिए है, अगर…',
+    forwhom_no_title:'यह आपके लिए नहीं, अगर…',
+    forwhom_yes:    ['बड़े होते हुए अपना कुछ खो दिया लगता है','बचपन को याद करते हुए भावुक हो जाते हैं','अपनी ज़िंदगी में ज़्यादा उपस्थित रहना चाहते हैं','बच्चे हैं और उनसे जुड़ना चाहते हैं','बचपन कठिन रहा और उसे ठीक करना चाहते हैं','बड़े होने की दुनिया से थोड़ी राहत चाहते हैं'],
+    forwhom_no:     ['मनोविज्ञान की तकनीकी किताब ढूँढ रहे हैं','अपने अतीत को लेकर कोई जिज्ञासा नहीं है','मानते हैं कि पुरानी यादें कमज़ोरी हैं','केवल काल्पनिक कहानियाँ पसंद हैं'],
+    author_label:   'लेखक के बारे में',
+    author_meta:    'मेडेलिन, कोलंबिया · 1979',
+    author_bio:     ['1979 में कोलंबिया में जन्मे। अंतिओकिया के बेयो में ला काबान्या मोहल्ले में पले-बढ़े। उद्यमी, विचारों के खोजी, खगोल विज्ञान, संगीत और लोगों की कहानियों के दीवाने।','यह किताब उन्होंने सोलह साल की उम्र में एक उधार ली हुई कॉपी में लिखी थी। वे पन्ने तीस साल तक एक फ़ाइल में मुड़े पड़े रहे। यह किताब वही है जो हुआ जब उन्होंने उन्हें दोबारा खोला।'],
+    cta_title:      'जो बच्चा आप थे, वह अभी भी आपके भीतर है।\nयह किताब उसे खोजने जाएगी।',
+    cta_sub:        'अभी Amazon पर उपलब्ध।\nपेपरबैक · स्पेनिश',
+    cta_price:      '$19.99 USD · दुनियाभर में डिलीवरी',
+    footer_link:    'Amazon पर देखें →',
+  },
+  hi: {
+    subtitle:'वह बच्चा जो हम अपने अंदर रखते हैं',
+    kicker:'कोलंबिया · बेयो, एंटियोकिया · 1984',
+    hero_written:'सोलह साल की उम्र में लिखी गई एक सच्ची कहानी।',
+    hero_body:'एक लड़का नए मोहल्ले में आता है। एक नाली, एक दोस्त, पेड़ों और मिट्टी से भरा मैदान मिलता है। बिना जाने, सब कुछ सीख लेता है जो मायने रखता है। यह किताब वही कहानी है — और उस वयस्क के लिए एक निमंत्रण जो इसे पढ़ता है, उस बच्चे को वापस पाने के लिए जिसे वह खो चुका समझता था।',
+    buy_amazon:'Amazon पर खरीदें →',
+    on_amazon:'Amazon पर उपलब्ध',
+    price:'पेपरबैक · $19.99 USD',
+    quote_text:'"1995 में कोलंबिया खून बह रहा था। और ला काबान्या के बच्चे पतंग उड़ाते रहे। यह पागलपन नहीं है। यह उम्मीद है।"',
+    quote_src:'— किताब से',
+    problem_label:'समस्या',
+    problem_title:'आखिरी बार आपने बिना किसी उद्देश्य के कब खेला था?',
+    problem_intro:'बचपन और आज के बीच किसी मोड़ पर, कुछ धीरे-धीरे बंद होता गया। चुपके से, बिना किसी सूचना के।',
+    problem_items:['आखिरी बार आपने सिर्फ इसलिए अपने हाथों से कुछ बनाया क्योंकि आप चाहते थे, वह कब था?','आखिरी बार आप किसी छोटी चीज़ से सच में चकित हुए, वह कब था?','आखिरी बार आप बिना कहीं जाने के दौड़े, वह कब था?','आखिरी बार आपने आग के इर्द-गिर्द खाना बाँटा, वह कब था?','आखिरी बार आपने खुद को बिना किसी योजना के रहने दिया, वह कब था?'],
+    problem_coda:'अगर आपको जवाब याद नहीं, तो यह किताब आपके लिए है।',
+    transform_label:'बदलाव',
+    transform_title:'पढ़ने से पहले और बाद में',
+    before:'पहले',
+    after:'बाद में',
+    before_items:['कुछ कमी का एहसास, पर पता नहीं क्या','वयस्क जीवन ही एकमात्र वास्तविकता','खेल "समय की बर्बादी"','बचपन कुछ ऐसा जो पीछे छूट गया','गंभीरता परिपक्वता का पर्याय'],
+    after_items:['उस चीज़ की पहचान जो अभी भी आपमें जीती है','वर्तमान सबसे समृद्ध जगह है','खेल सबसे पूर्ण विद्यालय है','बचपन एक संसाधन है, सिर्फ नॉस्टेल्जिया नहीं','बच्चा और वयस्क हाथ में हाथ'],
+    contents_label:'किताब में क्या मिलेगा',
+    contents_title:'चार भाग।\nएक दिशा।',
+    contents:[{t:'ला मांगा — एक सच्ची कहानी',d:'नाली, डॉन जुआन और उनकी गायों, सुरंगों वाली झोपड़ी, खेलों और उस दिन की असली कहानी जब बुलडोजर आए।'},{t:'बचपन का अदृश्य ताना-बाना',d:'सड़क ने क्या सिखाया। आकाश और सितारे। संगीत। घर और माता-पिता।'},{t:'वह बच्चा जो कभी नहीं गया',d:'अंदर का बच्चा क्या है। पवित्रता, उदारता, प्रेम असली नींव के रूप में।'},{t:'7 दिन की योजना',d:'अंदर के बच्चे को जगाने के लिए ठोस कदम। सात चुनौतियाँ जो कोई भी आज से शुरू कर सकता है।'}],
+    excerpt_label:'किताब का एक अंश',
+    excerpt_text:'जब बारिश रुकी, हम वहाँ गए — फेम्पो और मैं — देखने के लिए कि क्या है। यह एक छोटी-सी नाली थी: एक पतला पानी का बहाव, पहाड़ी की ढलान से पैदा हुआ। और उसी पल हमने पूरी दोपहर मिट्टी इकट्ठा करना शुरू कर दिया। हम दो बच्चे थे जिनकी उंगलियों के बीच मिट्टी थी। बस इतना ही काफी था।',
+    excerpt_source:'— अध्याय II, ला मांगा (1995/2026)',
+    days_label:'7 दिन की योजना',
+    days_title:'अंदर के बच्चे को जगाने के लिए एक सप्ताह',
+    days_intro:'पैसे की जरूरत नहीं। सही परिस्थितियों की जरूरत नहीं। बस इच्छाशक्ति।',
+    days:['सड़क पर वापसी','हाथों से बनाना','बिना उद्देश्य का खेल','पास की प्रकृति','अलाव और बाँटना','उस बच्चे को पत्र जो आप थे','जारी रखने का वादा'],
+    forwhom_label:'यह किताब किसके लिए है',
+    forwhom_title:'ईमानदारी से',
+    forwhom_yes_title:'यह किताब आपके लिए है अगर…',
+    forwhom_no_title:'यह आपके लिए नहीं है अगर…',
+    forwhom_yes:['आपको लगता है कि बड़े होते हुए आपने अपना कुछ खो दिया','आप भावनाओं के साथ बचपन याद करते हैं','आप अपने जीवन में और अधिक उपस्थित रहना चाहते हैं','आपके बच्चे हैं और उनसे जुड़ना चाहते हैं','आपका बचपन कठिन था और आप उसे ठीक करना चाहते हैं','आपको वयस्क दुनिया से थोड़ा आराम चाहिए'],
+    forwhom_no:['आप मनोविज्ञान का तकनीकी मैनुअल खोज रहे हैं','आपको अपने अतीत में कोई जिज्ञासा नहीं है','आपको लगता है कि नॉस्टेल्जिया एक कमज़ोरी है','आप केवल शुद्ध कल्पना पसंद करते हैं'],
+    author_label:'लेखक के बारे में',
+    author_meta:'मेदेयिन, कोलंबिया · 1979',
+    author_bio:['epersie का जन्म 1979 में कोलंबिया में हुआ। बेयो के ला काबान्या मोहल्ले और इस किताब में वर्णित ला मांगा में पले-बढ़े। उद्यमी, विचारों के खोजी, खगोल विज्ञान, संगीत और लोगों की कहानियों के प्रति जुनूनी।','यह किताब उन्होंने सोलह साल की उम्र में एक उधार नोटबुक में लिखी थी। वे पन्ने तीस साल तक एक फाइल में मुड़े रहे। यह किताब वही है जो हुआ जब उन्होंने उन्हें फिर से खोला।'],
+    cta_title:'वह बच्चा जो आप थे अभी भी आपके अंदर है।\nयह किताब उसे ढूंढने जाएगी।',
+    cta_sub:'अभी Amazon पर उपलब्ध।\nपेपरबैक · स्पैनिश',
+    cta_price:'$19.99 USD · दुनिया भर में डिलीवरी',
+    footer_link:'Amazon पर देखें →',
+  },
+
+};
+
+let currentLang = 'es';
+
+function setLang(lang) {
+  if (!T[lang]) return;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === lang)
+  );
+  const d = T[lang];
+  document.documentElement.lang = lang;
+
+  // Simple text nodes
+  // Update all Amazon links for this language
+  const amazonUrl = AMAZON_LINKS[lang] || AMAZON_LINKS['es'];
+  document.querySelectorAll('a[href*="amazon.com"]').forEach(a => {
+    a.href = amazonUrl;
+  });
+
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.dataset.t;
+    if (d[key] !== undefined && typeof d[key] === 'string') {
+      el.textContent = d[key];
+    }
+  });
+
+  // Problem list
+  const pl = document.getElementById('problem-list');
+  if (pl && d.problem_items) {
+    pl.innerHTML = d.problem_items.map(t => `<li>${t}</li>`).join('');
+  }
+
+  // Before / After lists
+  const bl = document.getElementById('before-list');
+  const al = document.getElementById('after-list');
+  if (bl && d.before_items) bl.innerHTML = d.before_items.map(t=>`<li>${t}</li>`).join('');
+  if (al && d.after_items) al.innerHTML = d.after_items.map(t=>`<li>${t}</li>`).join('');
+
+  // Contents
+  const cl = document.getElementById('contents-list');
+  if (cl && d.contents) {
+    cl.innerHTML = d.contents.map((c,i) => `
+      <div class="content-item">
+        <div class="content-num">${['I','II','III','IV'][i]}</div>
+        <div>
+          <div class="content-title">${c.t}</div>
+          <p class="content-desc">${c.d}</p>
+        </div>
+      </div>`).join('');
+  }
+
+  // Days
+  const dg = document.getElementById('days-grid');
+  if (dg && d.days) {
+    dg.innerHTML = d.days.map((t,i) => `
+      <div class="day-card">
+        <span class="day-num">${i+1}</span>
+        <span class="day-title">${t}</span>
+      </div>`).join('');
+  }
+
+  // For whom lists
+  const fy = document.getElementById('forwhom-yes');
+  const fn = document.getElementById('forwhom-no');
+  if (fy && d.forwhom_yes) fy.innerHTML = d.forwhom_yes.map(t=>`<li>${t}</li>`).join('');
+  if (fn && d.forwhom_no)  fn.innerHTML = d.forwhom_no.map(t=>`<li>${t}</li>`).join('');
+
+  // Author bio
+  const ab = document.getElementById('author-bio');
+  if (ab && d.author_bio) {
+    ab.innerHTML = d.author_bio.map(p => `<p>${p}</p>`).join('');
+  }
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.06 });
+reveals.forEach(el => obs.observe(el));
+
+// Init
+setLang('es');
+</script>
+</body>
+</html>
